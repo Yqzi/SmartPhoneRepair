@@ -22,8 +22,8 @@ function Image({ src, className }: { src: string; className: string }) {
 }
 
 const BlogPage = () => {
-    const searchParameter = window.location.search;
-    const article = blogs[searchParameter];
+    // const searchParameter = window.location.search;
+    const article = blogs["?article1"];
 
     return (
         <main className="blog-page min-h-screen absolute w-full overflow-hidden ">

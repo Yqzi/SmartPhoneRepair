@@ -1,13 +1,15 @@
 "use client";
 import { HiArrowRight } from "react-icons/hi";
-import { Apple, Honor, HuaweiLogo, OppoLogo, Samsung } from "@/assets/logos";
+import { Freedom, Koodo, Telus } from "@/assets/logos";
 import {
     Cart,
     ContactIcon,
     Lightning,
     Person1,
+    Phone,
     Stars,
     Verified,
+    Location,
 } from "@/assets/icons";
 import { Skill } from "./skills";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
@@ -18,62 +20,25 @@ import { motion } from "framer-motion";
 import { Highlight } from "@/components/ui/highlight";
 import { Videos } from "./video";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { emailKey } from "./keys";
+import Pricing from "./pricing";
 
 export default function Home(props: any) {
-    const phones = [
-        {
-            name: "Samsung A04e",
-            src: "https://www.fix4less.com/wp-content/uploads/2023/08/Samsung-A04e-32GB-Light-Blue-R8YTC0088GT-8806094731934-174.99-1-New.webp",
-            ram: "64GB",
-            price: "$179.99",
-        },
-        {
-            name: "Samsung A04s",
-            src: "https://images.samsung.com/is/image/samsung/p6pim/my/sm-a047fzcgxme/gallery/my-galaxy-a04s-a047-sm-a047fzcgxme-533790978?$650_519_PNG$",
-            ram: "64GB",
-            price: "$199.99",
-        },
-        {
-            name: "Samsung A05s",
-            src: "https://m.media-amazon.com/images/I/61TEyjMZbNL.jpg",
-            ram: "128GB",
-            price: "$249.99",
-        },
-        {
-            name: "Samsung A05",
-            src: "https://secure.mdg.ca/img/products_webp/en-CA/product_25367.webp",
-            ram: "64GB",
-            price: "$189.99",
-        },
-        {
-            name: "Samsung A05",
-            src: "https://wmw-eshop-prod.s3.amazonaws.com/images/products/4718/larges/Galaxy_A05_Silver.jpg?1698203700",
-            ram: "64GB",
-            price: "$189.99",
-        },
-        {
-            name: "Samsung A14",
-            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ROxLBPPvfan-yT0y0qpEkNBbsc_X2vfYQT1irEDKxlJrjyg3QU74DmoARYVjKYs1vX8&usqp=CAU",
-            ram: "128GB",
-            price: "$299.99",
-        },
-        {
-            name: "Samsung A32 5G",
-            src: "https://m-cdn.phonearena.com/images/article/154221-wide-two_350/Verizons-Galaxy-A14-5G-is-getting-updated-to-Android-14.jpg",
-            ram: "64GB",
-            price: "$249.99",
-        },
-    ];
     return (
         <main className="min-h-screen absolute w-full overflow-hidden">
             <div className="navbar flex fixed text-xl inset-x-0 max-w-screen-2xl h-20 mx-auto z-50 top-2 px-5 items-center justify-between rounded-full font-black max-md:hidden">
                 <a href="">
                     <img src="ico.png" className="h-12" />
                 </a>
-                <div className="flex gap-8">
-                    <a href="#new-arrivals">New Arrivals</a>
-                    <a href="#videos">Videos</a>
-                    <a href="#contact">Contact</a>
+                <div className="flex gap-8 items-center">
+                    <a href="#" className="flex">
+                        <Phone></Phone>
+                        (587) 334-6669
+                    </a>
+                    <a href="#" className="flex items-center">
+                        <Location></Location>
+                        76 st, 38 Ave NW, Edmonton
+                    </a>
                 </div>
                 <a
                     href="coming-soon"
@@ -137,7 +102,7 @@ export default function Home(props: any) {
                                     href: "mailto:smartphonerepair2017@outlook.com",
                                 },
                                 {
-                                    name: "(825) 439-9773",
+                                    name: "(587) 334-6669",
                                     id: 1,
                                     designation: "Call",
                                     href: "tel:+15873346669",
@@ -150,11 +115,9 @@ export default function Home(props: any) {
 
             {/* BRANDS */}
             <div className="brands flex h-[20vh] items-center justify-evenly max-md:hidden">
-                <Apple></Apple>
-                <Samsung></Samsung>
-                <Honor></Honor>
-                <HuaweiLogo></HuaweiLogo>
-                <OppoLogo></OppoLogo>
+                <Koodo></Koodo>
+                <Telus></Telus>
+                <Freedom></Freedom>
             </div>
 
             {/* SKILLS */}
@@ -165,7 +128,7 @@ export default function Home(props: any) {
                 <Skill
                     title={"Skilled Technicians"}
                     desc={
-                        "Our team comprises experienced professionals adept at repairing a wide range of phone models and accessories."
+                        "Our team comprises experienced professionals adept at repairing a wide range of phone models, computers and TVs"
                     }
                     icon={<Stars></Stars>}
                 ></Skill>
@@ -356,6 +319,7 @@ export default function Home(props: any) {
                 {/* CONTACT FORM */}
                 <CustomContactForm></CustomContactForm>
             </div>
+            <Pricing></Pricing>
 
             {/* SUBSCRIPTION */}
             <div className="subscription max-lg:hidden">
@@ -364,11 +328,16 @@ export default function Home(props: any) {
                         Subscribe to our newsletter to get latest news on your
                         inbox.
                     </h2>
-                    <div className="mb-5 flex gap-6">
+                    <form
+                        action={"https://formbold.com/s/" + emailKey}
+                        method="POST"
+                        className="mb-5 flex gap-6"
+                    >
                         <input
                             type="email"
-                            name="email"
-                            id="email"
+                            name="email for newsletter"
+                            id="email for newsletter"
+                            required
                             placeholder="Enter your email"
                             className="email-sub w-[320px] rounded-2xl border border-[#e0e0e0] py-3 px-6 text-sm font-medium outline-none focus:border-[#6A64F1] focus:shadow-md"
                         />
@@ -376,10 +345,55 @@ export default function Home(props: any) {
                             Subscribe
                             <HiArrowRight className="transition-transform group-hover:translate-x-1" />
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
             <Footer></Footer>
         </main>
     );
 }
+
+const phones = [
+    {
+        name: "Samsung A04e",
+        src: "https://www.fix4less.com/wp-content/uploads/2023/08/Samsung-A04e-32GB-Light-Blue-R8YTC0088GT-8806094731934-174.99-1-New.webp",
+        ram: "64GB",
+        price: "$179.99",
+    },
+    {
+        name: "Samsung A04s",
+        src: "https://images.samsung.com/is/image/samsung/p6pim/my/sm-a047fzcgxme/gallery/my-galaxy-a04s-a047-sm-a047fzcgxme-533790978?$650_519_PNG$",
+        ram: "64GB",
+        price: "$199.99",
+    },
+    {
+        name: "Samsung A05s",
+        src: "https://m.media-amazon.com/images/I/61TEyjMZbNL.jpg",
+        ram: "128GB",
+        price: "$249.99",
+    },
+    {
+        name: "Samsung A05",
+        src: "https://secure.mdg.ca/img/products_webp/en-CA/product_25367.webp",
+        ram: "64GB",
+        price: "$189.99",
+    },
+    {
+        name: "Samsung A05",
+        src: "https://wmw-eshop-prod.s3.amazonaws.com/images/products/4718/larges/Galaxy_A05_Silver.jpg?1698203700",
+        ram: "64GB",
+        price: "$189.99",
+    },
+    {
+        name: "Samsung A14",
+        src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ROxLBPPvfan-yT0y0qpEkNBbsc_X2vfYQT1irEDKxlJrjyg3QU74DmoARYVjKYs1vX8&usqp=CAU",
+        ram: "128GB",
+        price: "$299.99",
+    },
+    {
+        name: "Samsung A32 5G",
+        src: "https://m-cdn.phonearena.com/images/article/154221-wide-two_350/Verizons-Galaxy-A14-5G-is-getting-updated-to-Android-14.jpg",
+        ram: "64GB",
+        price: "$249.99",
+    },
+];
